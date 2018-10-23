@@ -35,8 +35,9 @@ function GymEnv(id::String)
 end
 
 reset!(env::GymEnv) = env.gymenv[:reset]()
-function render(env::GymEnv; mode="human")
-    env.gymenv[:render](mode)
+
+function render(env::GymEnv; mode="human", close=false)
+    env.gymenv[:render](; mode=mode, close=close)
 end
 
 function step!(env::GymEnv, action)
